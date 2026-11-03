@@ -1,41 +1,76 @@
-# merchant-collection-performance-dashboard
-
 # Merchant Collection Performance Dashboard
 ### Transaction & Fee Monitoring | 2026
 
 ## 1. Project Overview
 
-**Merchant Collection Performance Dashboard** merupakan proyek analisis data yang bertujuan untuk memantau nilai transaksi merchant, kontribusi biaya (Fee), penggunaan kanal pembayaran, serta performa pengumpulan Fee.
+**Merchant Collection Performance Dashboard** merupakan proyek analisis data untuk memantau nilai transaksi merchant, kontribusi Fee, penggunaan kanal pembayaran, serta performa pengumpulan Fee menggunakan Microsoft Excel.
 
-Proyek ini menggunakan Microsoft Excel untuk melakukan data cleaning, data processing, analisis menggunakan PivotTable, visualisasi data, dan pembuatan dashboard interaktif dengan Slicer.
-
-Dashboard dirancang untuk membantu pengguna memahami kondisi transaksi dan proses penagihan melalui informasi yang lebih ringkas dan mudah dianalisis.
+Proyek ini mencakup data understanding, data cleaning, data processing, analisis menggunakan PivotTable, visualisasi, dan pembuatan dashboard interaktif dengan Slicer.
 
 > **Dataset Note:** Dataset yang digunakan merupakan data simulasi untuk kebutuhan latihan dan portofolio, bukan data operasional BCA atau institusi keuangan lainnya.
 
 ---
 
-# 2. Project Background — STAR Method
+## 2. Dataset Overview — Column Description
 
-## S — Situation
+Dataset terdiri dari **13 kolom** yang mencakup informasi transaksi, merchant, pembayaran, dan pengumpulan Fee.
 
-Dalam aktivitas bisnis yang melibatkan banyak merchant dan transaksi, pemantauan nilai transaksi serta proses pengumpulan Fee menjadi hal yang penting.
+| No. | Column Name | Description |
+|---:|---|---|
+| 1 | `Transaction_ID` | ID unik untuk mengidentifikasi setiap transaksi. Digunakan untuk menghitung jumlah transaksi dan memeriksa data duplikat. |
+| 2 | `Transaction_Date` | Tanggal transaksi dilakukan. Digunakan untuk menganalisis tren transaksi berdasarkan hari, bulan, atau periode tertentu. |
+| 3 | `Merchant_ID` | Kode unik merchant yang melakukan transaksi. Digunakan untuk membedakan setiap merchant. |
+| 4 | `Merchant_Name` | Nama merchant yang terkait dengan transaksi. Digunakan untuk mengenali merchant dan melakukan analisis berdasarkan merchant. |
+| 5 | `Category` | Kategori atau jenis usaha merchant, seperti Properti, Elektronik, Kesehatan, Retail, dan F&B. Digunakan untuk membandingkan kontribusi transaksi antar kategori. |
+| 6 | `City` | Kota tempat merchant berada. Digunakan untuk menganalisis persebaran transaksi berdasarkan lokasi. |
+| 7 | `Payment_Channel` | Kanal pembayaran yang digunakan, seperti QRIS, EDC, Transfer, dan Virtual Account. Digunakan untuk menganalisis penggunaan kanal pembayaran. |
+| 8 | `Transaction_Amount_Rp` | Nilai transaksi dalam Rupiah. Digunakan untuk menghitung total dan rata-rata nilai transaksi serta membandingkan performa transaksi. |
+| 9 | `Fee_Rate` | Persentase tarif Fee yang diterapkan pada transaksi. Digunakan sebagai dasar perhitungan Fee. |
+| 10 | `Fee_Amount_Rp` | Nominal Fee dalam Rupiah yang dihitung dari transaksi. Digunakan untuk menganalisis total Fee. |
+| 11 | `Collection_Status` | Status pengumpulan Fee, yaitu Lunas, Belum Lunas, atau Dalam Proses. Digunakan untuk memantau status penagihan. |
+| 12 | `Due_Date` | Tanggal jatuh tempo pengumpulan Fee. Digunakan untuk membantu pemantauan jadwal dan tindak lanjut penagihan. |
+| 13 | `Collected_Amount_Rp` | Nominal Fee yang telah terkumpul dalam Rupiah. Digunakan untuk membandingkan nominal terkumpul dengan total Fee dan menghitung Collection Rate. |
 
-Data transaksi yang tersimpan dalam bentuk tabel belum tentu memberikan gambaran yang mudah dipahami mengenai:
+### Column Grouping
 
-- Perkembangan nilai transaksi setiap bulan.
-- Kategori merchant dengan kontribusi transaksi terbesar.
-- Kanal pembayaran yang paling banyak digunakan.
-- Jumlah transaksi berdasarkan status penagihan.
-- Perbandingan Fee yang sudah dan belum terkumpul.
+Untuk mempermudah proses analisis, kolom dataset dapat dikelompokkan menjadi empat bagian:
 
-Oleh karena itu, diperlukan proses pengolahan dan analisis data untuk mengubah data transaksi menjadi informasi yang dapat membantu proses pemantauan dan pengambilan keputusan.
+**1. Transaction Information**
+- `Transaction_ID`
+- `Transaction_Date`
+- `Transaction_Amount_Rp`
 
-## T — Task
+**2. Merchant Information**
+- `Merchant_ID`
+- `Merchant_Name`
+- `Category`
+- `City`
 
-Dalam proyek ini, saya bertanggung jawab untuk mengolah dataset transaksi merchant dan membangun dashboard yang dapat digunakan untuk memantau performa transaksi serta pengumpulan Fee.
+**3. Payment Information**
+- `Payment_Channel`
 
-Fokus analisis proyek dibagi menjadi lima pertanyaan utama:
+**4. Fee and Collection Information**
+- `Fee_Rate`
+- `Fee_Amount_Rp`
+- `Collection_Status`
+- `Due_Date`
+- `Collected_Amount_Rp`
+
+---
+
+## 3. Project Background — STAR Method
+
+### S — Situation
+
+Data transaksi dalam bentuk tabel belum secara langsung memberikan gambaran ringkas mengenai tren transaksi, kontribusi kategori merchant, kanal pembayaran yang digunakan, dan status pengumpulan Fee.
+
+Oleh karena itu, diperlukan proses pengolahan dan analisis data untuk mengubah data transaksi menjadi informasi yang lebih mudah dipahami dan digunakan dalam pemantauan bisnis.
+
+### T — Task
+
+Saya bertanggung jawab mengolah dataset transaksi merchant dan membangun dashboard untuk memantau performa transaksi serta pengumpulan Fee.
+
+Analisis difokuskan pada lima pertanyaan utama:
 
 **1. Bulan mana yang memiliki nilai transaksi tertinggi?**
 
@@ -43,7 +78,7 @@ Mengidentifikasi bulan dengan total nilai transaksi terbesar untuk mengetahui pe
 
 **2. Kategori merchant mana yang memberikan kontribusi nilai transaksi terbesar?**
 
-Membandingkan total nilai transaksi berdasarkan kategori merchant untuk mengetahui kategori yang memberikan kontribusi terbesar.
+Membandingkan nilai transaksi berdasarkan kategori merchant untuk mengetahui kategori dengan kontribusi terbesar.
 
 **3. Kanal pembayaran apa yang paling banyak digunakan?**
 
@@ -51,41 +86,36 @@ Menghitung jumlah transaksi berdasarkan Payment Channel untuk mengetahui kanal p
 
 **4. Berapa total Fee yang belum tertagih dan berapa transaksi yang belum lunas atau masih dalam proses?**
 
-Menganalisis Collection Status dan membandingkan total Fee dengan nominal yang sudah terkumpul untuk mengetahui kondisi pengumpulan Fee.
+Menganalisis Collection Status serta membandingkan total Fee dengan nominal yang sudah terkumpul.
 
 **5. Apa rekomendasi yang dapat diberikan berdasarkan temuan data?**
 
 Menyusun rekomendasi berdasarkan hasil analisis untuk mendukung pemantauan transaksi dan proses penagihan.
 
-## A — Action
+### A — Action
 
-Untuk menyelesaikan proyek, saya melakukan beberapa tahapan berikut.
+#### 1. Data Understanding
 
-### 1. Data Understanding
+Melakukan pemeriksaan awal untuk memahami struktur dan karakteristik dataset.
 
-Melakukan pemeriksaan awal terhadap dataset untuk memahami struktur dan karakteristik data.
-
-Dataset memiliki:
 - 300 transaksi setelah proses penghapusan duplikasi.
 - 13 kolom data transaksi.
 - Periode transaksi Januari–Oktober 2026.
-- Informasi merchant, kategori, kota, kanal pembayaran, nilai transaksi, Fee, dan status penagihan.
+- Mencakup informasi merchant, kategori, kota, kanal pembayaran, nilai transaksi, Fee, dan status penagihan.
 
-### 2. Data Cleaning
+#### 2. Data Cleaning
 
-Melakukan pembersihan data menggunakan Microsoft Excel, meliputi:
+Melakukan pembersihan data menggunakan Microsoft Excel:
 
-- Memeriksa dan menghapus satu baris transaksi duplikat dengan Transaction ID TRX0072.
-- Mengidentifikasi tiga nilai kosong pada kolom City dan mengisinya dengan kategori Unknown.
-- Mengidentifikasi dua nilai kosong pada Transaction Amount.
-- Memperkirakan nilai transaksi yang kosong berdasarkan Fee Amount dibagi Fee Rate, dengan asumsi hubungan perhitungan Fee tersebut berlaku.
-- Memeriksa status penagihan dan menemukan dua transaksi berstatus Belum Lunas yang sudah memiliki nominal Collected Amount. Data tersebut dipertahankan untuk pemeriksaan lebih lanjut, bukan langsung dianggap sebagai kesalahan.
+- Memeriksa dan menghapus satu baris transaksi duplikat dengan Transaction ID `TRX0072`.
+- Mengidentifikasi tiga nilai kosong pada kolom `City` dan mengisinya dengan `Unknown`.
+- Mengidentifikasi dua nilai kosong pada `Transaction_Amount_Rp`.
+- Memperkirakan nilai transaksi yang kosong menggunakan rumus `Fee_Amount_Rp / Fee_Rate`, dengan asumsi hubungan perhitungan Fee tersebut berlaku.
+- Memeriksa dua transaksi berstatus `Belum Lunas` yang sudah memiliki nominal `Collected Amount`. Data dipertahankan untuk pemeriksaan lebih lanjut, bukan langsung dianggap sebagai kesalahan.
 
-### 3. Data Processing and Analysis
+#### 3. Data Processing and Analysis
 
-Menggunakan PivotTable untuk mengolah dan menganalisis data berdasarkan beberapa dimensi.
-
-Analisis yang dilakukan meliputi:
+Menggunakan PivotTable untuk mengolah dan menganalisis data berdasarkan beberapa dimensi:
 
 - Total nilai transaksi berdasarkan bulan.
 - Total nilai transaksi berdasarkan kategori merchant.
@@ -93,25 +123,25 @@ Analisis yang dilakukan meliputi:
 - Jumlah transaksi berdasarkan Collection Status.
 - Total Fee dan Collected Amount untuk mengukur performa pengumpulan Fee.
 
-### 4. Dashboard Development
+#### 4. Dashboard Development
 
-Membangun dashboard menggunakan Microsoft Excel dengan komponen:
+Membangun dashboard menggunakan Microsoft Excel dengan komponen berikut.
 
-**KPI Cards:**
+**KPI Cards**
 - Total Transactions
 - Total Fee
 - Fee Collected
 - Fee Not Yet Collected
 - Collection Rate
 
-**Data Visualizations:**
+**Data Visualizations**
 - Monthly Transaction Value Trend — Line Chart.
 - Transaction Distribution by Collection Status — Pie Chart.
 - Fee Collection Performance — Doughnut Chart.
 - Total Fee by Merchant Category — Horizontal Bar Chart.
 - Transaction Volume by Payment Channel — Column Chart.
 
-**Interactive Filters:**
+**Interactive Filters**
 - Category
 - City
 - Collection Status
@@ -119,11 +149,11 @@ Membangun dashboard menggunakan Microsoft Excel dengan komponen:
 
 Slicer digunakan untuk membantu pengguna memfilter informasi berdasarkan kategori, kota, status penagihan, dan kanal pembayaran.
 
-## R — Result
+### R — Result
 
 Berdasarkan pengolahan dan analisis terhadap 300 transaksi, diperoleh hasil sebagai berikut.
 
-### 1. Key Performance Indicators
+#### 1. Key Performance Indicators
 
 | KPI | Result |
 |---|---:|
@@ -134,17 +164,13 @@ Berdasarkan pengolahan dan analisis terhadap 300 transaksi, diperoleh hasil seba
 | Fee Not Yet Collected | Rp1.170.683 |
 | Collection Rate | 81,57% |
 
-### 2. Monthly Transaction Analysis
+#### 2. Monthly Transaction Analysis
 
 Bulan Mei mencatat nilai transaksi tertinggi sebesar **Rp117.959.000**.
 
-Sementara itu, Oktober memiliki nilai transaksi terendah sebesar **Rp3.140.000**.
+Sementara itu, Oktober memiliki nilai transaksi terendah sebesar **Rp3.140.000**. Nilai Oktober perlu ditinjau dengan mempertimbangkan kelengkapan periode datanya.
 
-Temuan ini menunjukkan adanya perbedaan aktivitas transaksi antarperiode. Nilai Oktober perlu ditinjau dengan mempertimbangkan kelengkapan periode datanya.
-
-### 3. Merchant Category Analysis
-
-Kategori Properti memberikan kontribusi nilai transaksi terbesar.
+#### 3. Merchant Category Analysis
 
 | Merchant Category | Transaction Value |
 |---|---:|
@@ -154,11 +180,9 @@ Kategori Properti memberikan kontribusi nilai transaksi terbesar.
 | Retail | Rp25.271.000 |
 | F&B | Rp12.335.000 |
 
-Properti menyumbang sekitar **64,04%** dari total nilai transaksi. Jika digabungkan dengan Elektronik, kedua kategori tersebut berkontribusi sekitar **87,32%**.
+Kategori Properti menyumbang sekitar **64,04%** dari total nilai transaksi. Jika digabungkan dengan Elektronik, kedua kategori tersebut berkontribusi sekitar **87,32%**.
 
-### 4. Payment Channel Analysis
-
-QRIS merupakan kanal pembayaran dengan jumlah transaksi terbanyak.
+#### 4. Payment Channel Analysis
 
 | Payment Channel | Transaction Count |
 |---|---:|
@@ -168,9 +192,9 @@ QRIS merupakan kanal pembayaran dengan jumlah transaksi terbanyak.
 | Virtual Account | 68 |
 | **Total** | **300** |
 
-QRIS menyumbang sekitar **28,67%** dari keseluruhan transaksi.
+QRIS merupakan kanal pembayaran dengan jumlah transaksi terbanyak, yaitu 86 transaksi atau sekitar **28,67%** dari keseluruhan transaksi.
 
-### 5. Collection Status Analysis
+#### 5. Collection Status Analysis
 
 | Collection Status | Transaction Count |
 |---|---:|
@@ -181,38 +205,35 @@ QRIS menyumbang sekitar **28,67%** dari keseluruhan transaksi.
 
 Sebanyak 233 transaksi atau 77,67% berstatus Lunas. Sementara itu, terdapat 67 transaksi yang belum berstatus Lunas.
 
-### 6. Fee Collection Analysis
+#### 6. Fee Collection Analysis
 
 Dari total Fee sebesar Rp6.352.163, nominal yang sudah terkumpul mencapai Rp5.181.480.
 
-Dengan demikian:
 - Fee Collected: Rp5.181.480 (81,57%).
 - Fee Not Yet Collected: Rp1.170.683 (18,43%).
 
-### 7. Business Recommendations
-
-Berdasarkan hasil analisis, terdapat dua rekomendasi utama:
+#### 7. Business Recommendations
 
 **Recommendation 1 — Improve Collection Monitoring**
 
-Memprioritaskan pemantauan terhadap 67 transaksi yang belum berstatus Lunas dengan memperhatikan tanggal jatuh tempo dan nominal Fee. Langkah ini dapat membantu proses tindak lanjut penagihan dan meningkatkan tingkat pengumpulan Fee.
+Memprioritaskan pemantauan terhadap 67 transaksi yang belum berstatus Lunas dengan memperhatikan tanggal jatuh tempo dan nominal Fee. Langkah ini dapat membantu proses tindak lanjut penagihan.
 
 **Recommendation 2 — Monitor Key Merchant Categories**
 
-Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedua kategori tersebut menyumbang sekitar 87,32% dari total nilai transaksi. Pemantauan secara berkala dapat membantu memahami perkembangan dan kontribusi kedua kategori tersebut.
+Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedua kategori tersebut menyumbang sekitar 87,32% dari total nilai transaksi. Pemantauan berkala dapat membantu memahami perkembangan kontribusi kedua kategori tersebut.
 
 ---
 
-# 3. Tools & Skills
+## 4. Tools & Skills
 
-**Tools:**
+**Tools**
 - Microsoft Excel
 - PivotTable
 - PivotChart
 - Excel Slicer
 - Excel Formulas
 
-**Technical Skills:**
+**Technical Skills**
 - Data Cleaning
 - Data Processing
 - Data Validation
@@ -224,15 +245,9 @@ Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedu
 
 ---
 
-# 4. Dashboard Preview
+## 5. Dashboard Preview
 
-Tambahkan screenshot dashboard Excel pada bagian ini.
-
-Contoh nama file gambar:
-
-`dashboard-preview.png`
-
-Kemudian gunakan Markdown berikut:
+Simpan screenshot dashboard di repository dengan nama `dashboard-preview.png`, lalu tampilkan menggunakan:
 
 ```markdown
 ![Merchant Collection Performance Dashboard](dashboard-preview.png)
@@ -240,10 +255,16 @@ Kemudian gunakan Markdown berikut:
 
 ---
 
-# 5. Key Takeaways
+## 6. Key Takeaways
 
 Melalui proyek ini, saya memperoleh pengalaman dalam mengolah data transaksi menggunakan Microsoft Excel, melakukan analisis berdasarkan beberapa dimensi bisnis, serta menyajikan hasil analisis melalui dashboard interaktif.
 
-Proyek ini juga membantu saya memahami bagaimana data transaksi dapat digunakan untuk memantau performa merchant, penggunaan kanal pembayaran, dan proses pengumpulan Fee.
+Proyek ini membantu saya memahami bagaimana data transaksi dapat digunakan untuk memantau performa merchant, penggunaan kanal pembayaran, dan proses pengumpulan Fee.
 
 **Project Focus:** Data Analytics | Business Intelligence | Excel Dashboard
+
+---
+
+## 7. Repository Note
+
+Dataset pada proyek ini merupakan data simulasi untuk latihan dan portofolio. Seluruh hasil analisis dan rekomendasi hanya berlaku untuk dataset tersebut dan tidak merepresentasikan kinerja atau proses operasional institusi keuangan tertentu.
