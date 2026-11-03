@@ -247,9 +247,6 @@ Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedu
 
 ## 5. Dashboard Preview
 
-Simpan screenshot dashboard di repository dengan nama `dashboard-preview.png`, lalu tampilkan menggunakan:
-
-```markdown
 ![Merchant Collection Performance Dashboard](dashboard-preview.png)
 ```
 
