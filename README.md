@@ -248,6 +248,8 @@ Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedu
 ## 5. Dashboard Preview
 
 ![Merchant Collection Performance Dashboard](dashboard-preview.png)
+
+
 ```
 
 ## 6. Key Takeaways
@@ -265,155 +267,84 @@ Proyek ini membantu saya memahami bagaimana data transaksi dapat digunakan untuk
 Dataset pada proyek ini merupakan data simulasi untuk latihan dan portofolio. Seluruh hasil analisis dan rekomendasi hanya berlaku untuk dataset tersebut dan tidak merepresentasikan kinerja atau proses operasional institusi keuangan tertentu.
 
 ---
-Merchant Collection Performance Dashboard
 
-Transaction & Fee Monitoring | 2026
+# Merchant Collection Performance Dashboard
+**Transaction & Fee Monitoring | 2026**
 
-Project Overview
+## Project Overview
 
 Proyek analisis data menggunakan Microsoft Excel untuk memantau transaksi merchant dan performa pengumpulan Fee. Dataset yang digunakan merupakan data simulasi dengan 300 transaksi dan 13 kolom.
 
-Dataset Columns
+## Dataset Columns
 
-Column
+| Column | Description |
+|---|---|
+| Transaction_ID | ID unik transaksi |
+| Transaction_Date | Tanggal transaksi |
+| Merchant_ID | ID merchant |
+| Merchant_Name | Nama merchant |
+| Category | Kategori usaha merchant |
+| City | Kota merchant |
+| Payment_Channel | Kanal pembayaran |
+| Transaction_Amount_Rp | Nilai transaksi |
+| Fee_Rate | Persentase tarif Fee |
+| Fee_Amount_Rp | Nominal Fee |
+| Collection_Status | Status pengumpulan Fee |
+| Due_Date | Tanggal jatuh tempo |
+| Collected_Amount_Rp | Nominal Fee terkumpul |
 
-Description
+## Project Background — STAR Method
 
-Transaction_ID
-
-ID unik transaksi
-
-Transaction_Date
-
-Tanggal transaksi
-
-Merchant_ID
-
-ID merchant
-
-Merchant_Name
-
-Nama merchant
-
-Category
-
-Kategori usaha merchant
-
-City
-
-Kota merchant
-
-Payment_Channel
-
-Kanal pembayaran
-
-Transaction_Amount_Rp
-
-Nilai transaksi
-
-Fee_Rate
-
-Persentase tarif Fee
-
-Fee_Amount_Rp
-
-Nominal Fee
-
-Collection_Status
-
-Status pengumpulan Fee
-
-Due_Date
-
-Tanggal jatuh tempo
-
-Collected_Amount_Rp
-
-Nominal Fee terkumpul
-
-Project Background — STAR Method
-
-S — Situation
-
+### S — Situation
 Data transaksi merchant perlu dianalisis agar informasi mengenai nilai transaksi, kategori merchant, kanal pembayaran, dan pengumpulan Fee lebih mudah dipantau.
 
-T — Task
-
+### T — Task
 Mengolah data transaksi dan membuat dashboard untuk menjawab lima pertanyaan:
+1. Bulan dengan nilai transaksi tertinggi.
+2. Kategori merchant dengan kontribusi transaksi terbesar.
+3. Kanal pembayaran yang paling banyak digunakan.
+4. Total Fee yang belum terkumpul dan jumlah transaksi yang belum lunas atau dalam proses.
+5. Rekomendasi berdasarkan hasil analisis.
 
-Bulan dengan nilai transaksi tertinggi.
+### A — Action
+- Melakukan data cleaning untuk menangani duplikasi dan nilai kosong.
+- Mengolah data menggunakan PivotTable.
+- Membuat grafik menggunakan PivotChart.
+- Menyusun dashboard dengan KPI dan Slicer interaktif.
+- Menganalisis tren transaksi, kategori merchant, kanal pembayaran, dan status pengumpulan Fee.
 
-Kategori merchant dengan kontribusi transaksi terbesar.
-
-Kanal pembayaran yang paling banyak digunakan.
-
-Total Fee yang belum terkumpul dan jumlah transaksi yang belum lunas atau dalam proses.
-
-Rekomendasi berdasarkan hasil analisis.
-
-A — Action
-
-Melakukan data cleaning untuk menangani duplikasi dan nilai kosong.
-
-Mengolah data menggunakan PivotTable.
-
-Membuat grafik menggunakan PivotChart.
-
-Menyusun dashboard dengan KPI dan Slicer interaktif.
-
-Menganalisis tren transaksi, kategori merchant, kanal pembayaran, dan status pengumpulan Fee.
-
-R — Result
+### R — Result
 
 Hasil analisis dari 300 transaksi:
 
-Metric
+| Metric | Result |
+|---|---:|
+| Total Transaction Value | Rp748.430.000 |
+| Total Fee | Rp6.352.163 |
+| Fee Collected | Rp5.181.480 |
+| Fee Not Yet Collected | Rp1.170.683 |
+| Collection Rate | 81,57% |
 
-Result
+**Key Findings:**
+- Mei menjadi bulan dengan nilai transaksi tertinggi sebesar Rp117.959.000.
+- Properti menjadi kategori dengan kontribusi transaksi terbesar, sekitar 64,04%.
+- QRIS menjadi kanal pembayaran terbanyak dengan 86 transaksi.
+- Sebanyak 233 transaksi berstatus Lunas dan 67 transaksi belum berstatus Lunas.
 
-Total Transaction Value
+**Recommendations:**
+1. Meningkatkan pemantauan transaksi yang belum berstatus Lunas berdasarkan nominal Fee dan tanggal jatuh tempo.
+2. Memantau kategori Properti dan Elektronik karena memberikan kontribusi sekitar 87,32% dari total nilai transaksi.
 
-Rp748.430.000
+## Dashboard Preview
 
-Total Fee
+![Merchant Collection Performance Dashboard](dashboard-preview.png)
 
-Rp6.352.163
+## Tools & Skills
 
-Fee Collected
+**Tools:** Microsoft Excel, PivotTable, PivotChart, Excel Slicer.
 
-Rp5.181.480
+**Skills:** Data Cleaning, Data Processing, Data Analysis, Data Visualization, Dashboard Development.
 
-Fee Not Yet Collected
+---
 
-Rp1.170.683
-
-Collection Rate
-
-81,57%
-
-Key Findings:
-
-Mei menjadi bulan dengan nilai transaksi tertinggi sebesar Rp117.959.000.
-
-Properti menjadi kategori dengan kontribusi transaksi terbesar, sekitar 64,04%.
-
-QRIS menjadi kanal pembayaran terbanyak dengan 86 transaksi.
-
-Sebanyak 233 transaksi berstatus Lunas dan 67 transaksi belum berstatus Lunas.
-
-Recommendations:
-
-Meningkatkan pemantauan transaksi yang belum berstatus Lunas berdasarkan nominal Fee dan tanggal jatuh tempo.
-
-Memantau kategori Properti dan Elektronik karena memberikan kontribusi sekitar 87,32% dari total nilai transaksi.
-
-Dashboard Preview
-
-
-Tools & Skills
-
-Tools: Microsoft Excel, PivotTable, PivotChart, Excel Slicer.
-
-Skills: Data Cleaning, Data Processing, Data Analysis, Data Visualization, Dashboard Development.
-
-Note: Dataset merupakan data simulasi untuk kebutuhan latihan dan portofolio, bukan data operasional perusahaan atau institusi keuangan tertentu.
+*Note: Dataset merupakan data simulasi untuk kebutuhan latihan dan portofolio, bukan data operasional perusahaan atau institusi keuangan tertentu.*
