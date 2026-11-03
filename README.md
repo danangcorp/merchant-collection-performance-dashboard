@@ -250,8 +250,6 @@ Memberikan perhatian lebih terhadap kategori Properti dan Elektronik karena kedu
 ![Merchant Collection Performance Dashboard](dashboard-preview.png)
 ```
 
----
-
 ## 6. Key Takeaways
 
 Melalui proyek ini, saya memperoleh pengalaman dalam mengolah data transaksi menggunakan Microsoft Excel, melakukan analisis berdasarkan beberapa dimensi bisnis, serta menyajikan hasil analisis melalui dashboard interaktif.
