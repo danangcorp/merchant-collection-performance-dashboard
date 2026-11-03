@@ -266,6 +266,7 @@ Proyek ini membantu saya memahami bagaimana data transaksi dapat digunakan untuk
 
 Dataset pada proyek ini merupakan data simulasi untuk latihan dan portofolio. Seluruh hasil analisis dan rekomendasi hanya berlaku untuk dataset tersebut dan tidak merepresentasikan kinerja atau proses operasional institusi keuangan tertentu.
 
+---
 Merchant Collection Performance Dashboard
 
 Transaction & Fee Monitoring | 2026
@@ -409,7 +410,6 @@ Meningkatkan pemantauan transaksi yang belum berstatus Lunas berdasarkan nominal
 Memantau kategori Properti dan Elektronik karena memberikan kontribusi sekitar 87,32% dari total nilai transaksi.
 
 Dashboard Preview
-
 
 
 Tools & Skills
